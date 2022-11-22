@@ -21,7 +21,7 @@ By default all notes are kept in `$HOME/Documents/Notes`.
 - If you use multiple keywords with `listnotes.sh` they will be logical OR, i.e. any file
   (name or contents) that contains any of the keywords will be output
 - `listnotes.sh` lists notes in order recent to oldest but if more than one keyword is specified then the ordering may not be correct
-- There may be duplicates in the output of `listnotes.sh`
+- There may be duplicate results in the output of `listnotes.sh`
 - Licensed under GPL version 3
 
 ## Examples
