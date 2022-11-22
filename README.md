@@ -18,10 +18,10 @@ By default all notes are kept in `$HOME/Documents/Notes`.
   - No, using YYYYmmdd is the only way to make sure that files are automatically
     listed in chronological order
 - If you run `note.sh` without a title, it will use `note` for the title
-- If you use multiple keywords with `listnote.sh` they will be logical OR, i.e. any file
+- If you use multiple keywords with `listnotes.sh` they will be logical OR, i.e. any file
   (name or contents) that contains any of the keywords will be output
-- `listnote.sh` lists notes in order recent to oldest but if more than one keyword is specified then the ordering may not be correct
-- There may be duplicates in the output of `listnote.sh`
+- `listnotes.sh` lists notes in order recent to oldest but if more than one keyword is specified then the ordering may not be correct
+- There may be duplicates in the output of `listnotes.sh`
 - Licensed under GPL version 3
 
 ## Examples
