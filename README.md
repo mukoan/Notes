@@ -10,7 +10,11 @@ reading. It's easy to grep your notes.
 - `note.sh <title>` creates a note using `title` as part of the filename and appends the date
 - `listnotes.sh <optional keywords>`  lists your notes, most recent to oldest
 
-By default all notes are kept in `$HOME/Documents/Notes`.
+## Installation
+
+- Copy the scripts somewhere into your path and make them executable
+- By default all notes are kept in `$HOME/Documents/Notes` so make sure that
+  directory exists
 
 ## Information
 
@@ -21,7 +25,6 @@ By default all notes are kept in `$HOME/Documents/Notes`.
 - If you use multiple keywords with `listnotes.sh` they will be logical OR, i.e. any file
   (name or contents) that contains any of the keywords will be output
 - `listnotes.sh` lists notes in order recent to oldest but if more than one keyword is specified then the ordering may not be correct
-- There may be duplicate results in the output of `listnotes.sh`
 - Licensed under GPL version 3
 
 ## Examples
