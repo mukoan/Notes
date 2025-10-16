@@ -4,8 +4,18 @@
 # Author : Lyndon Hill
 # Brief  : Make a note
 
+## Configuration
+
+# Set your favourite text editor here
+EDITOR="gvim +"
+
+# Location to store notes
+NOTE_LOCATION="${HOME}/Documents/Notes"
+
 # Set this to 1 to add an optional header, 0 to disable
 ADDHEADER=1
+
+## Main script
 
 # Get note name or default to "note"
 TITLE="note"
@@ -14,10 +24,11 @@ if [ $# -gt 0 ]; then
 fi
 
 DATE=$(date +"%Y%m%d")
-NOTENAME="${HOME}/Documents/Notes/${TITLE}${DATE}"
+NOTENAME="${NOTE_LOCATION}/${TITLE}${DATE}"
 
 if test -f "$NOTENAME"; then
-  echo "File $NOTENAME already exists"
+  echo "Note for '$TITLE' already exists; either choose a different title or"
+  echo "edit the existing note, e.g. ${EDITOR} ${NOTENAME}"
   exit 1
 fi
 
@@ -28,5 +39,5 @@ if [ $ADDHEADER -gt 0 ]; then
   printf "tags =\npath = ${NOTENAME}\n\n\n" >> ${NOTENAME}
 fi
 
-# Set your favourite text editor here
-gvim + ${NOTENAME}
+# Edit note
+${EDITOR} ${NOTENAME}

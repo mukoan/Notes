@@ -13,8 +13,9 @@ reading. It's easy to grep your notes.
 ## Installation
 
 - Copy the scripts somewhere into your path and make them executable
-- By default all notes are kept in `$HOME/Documents/Notes` so make sure that
-  directory exists
+- Edit the configuration section in the note.sh script
+  - Change the editor if you don't use `vim`
+  - Change the notes directory if you want to keep your notes somewhere else
 
 ## Information
 
