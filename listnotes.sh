@@ -21,30 +21,25 @@ fi
 RESULTS=()
 RESULTS_PARTIAL=()
 
-IFS=$'\n'
-
 for keyword in "$@"
 do
   read -r -d '' -a RESULTS_PARTIAL < <( find ${NOTEDIR} | grep .$keyword* && printf '\0' )
   RESULTS=("${RESULTS[@]}" "${RESULTS_PARTIAL[@]}")
-  read -r -d '' -a RESULTS_PARTIAL < <( grep -lr "$keyword" ${NOTEDIR}/* && printf '\0' )
+  read -r -d '' -a RESULTS_PARTIAL < <( grep -lr "$keyword" "${NOTEDIR}"/* 2>/dev/null && printf '\0' )
   RESULTS=("${RESULTS[@]}" "${RESULTS_PARTIAL[@]}")
 
   if [[ $(find ${LOGDIR} -type f  | wc -l) -gt 0 ]]; then
-    read -r -d '' -a RESULTS_PARTIAL < <( grep -lr "$keyword" ${LOGDIR}/* && printf '\0' )
+    read -r -d '' -a RESULTS_PARTIAL < <( grep -lr "$keyword" "${LOGDIR}"/* 2>/dev/null && printf '\0' )
     RESULTS=("${RESULTS[@]}" "${RESULTS_PARTIAL[@]}")
   fi
 done
 
 # Remove duplicates
 
-declare -A NOTE_SEEN
 NOTE_UNIQUE=()
-for w in "${RESULTS[@]}"; do
-    [[ ${NOTE_SEEN[$w]} ]] && continue
-    NOTE_UNIQUE+=( "$w" )
-    NOTE_SEEN[$w]=x
-done
+IFS=$'\n' 
+NOTE_UNIQUE=($(printf "%s\n" "${RESULTS[@]}" | sort -u))
+unset IFS
 
 # Output results
 
