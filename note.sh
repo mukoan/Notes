@@ -15,6 +15,9 @@ NOTE_LOCATION="${HOME}/Documents/Notes"
 # Set this to 1 to add an optional header, 0 to disable
 ADDHEADER=1
 
+# Use a .txt extension on all notes
+EXTENSION=0
+
 ## Main script
 
 # Get note name or default to "note"
@@ -25,6 +28,10 @@ fi
 
 DATE=$(date +"%Y%m%d")
 NOTENAME="${NOTE_LOCATION}/${TITLE}${DATE}"
+
+if [ $EXTENSION -gt 0 ]; then
+  NOTENAME="${NOTENAME}.txt"
+fi
 
 if test -f "$NOTENAME"; then
   echo "Note for '$TITLE' already exists; either choose a different title or"
