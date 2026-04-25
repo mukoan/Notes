@@ -20,14 +20,20 @@ EXTENSION=0
 
 ## Main script
 
+DATE=$(date +"%Y%m%d")
+
 # Get note name or default to "note"
 TITLE="note"
 if [ $# -gt 0 ]; then
   TITLE="$1"
 fi
 
-DATE=$(date +"%Y%m%d")
-NOTENAME="${NOTE_LOCATION}/${TITLE}${DATE}"
+if [[ $TITLE == *[0-9] ]]; then
+  # Add an underscore if note name ends with a number
+  NOTENAME="${NOTE_LOCATION}/${TITLE}_${DATE}"
+else
+  NOTENAME="${NOTE_LOCATION}/${TITLE}${DATE}"
+fi
 
 if [ $EXTENSION -gt 0 ]; then
   NOTENAME="${NOTENAME}.txt"
